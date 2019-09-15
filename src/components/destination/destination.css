@@ -1,24 +1,46 @@
-.gadget-container{
-  height: 500px;
-  background: #f3ce56;
-  margin-right: 60px;
-  position: relative;
-  padding: 20px;
-  max-width: 430px;
-}
-
-.pick-up-section{
-  width: 100%;
-}
-
-input{
-  height: 50px;
+.destination-container{
+  min-height: 50px;
   padding: 10px 0px;
-  margin: 10px 0;
-  border-radius: 5px;
-  border: 0;
   padding-left: 20px;
-  font-weight: bold;
-  width: 100%;
   box-sizing: border-box;
+  background: white;
+  border-bottom: 1px solid grey;
+  cursor:pointer
+}
+
+.destination-container:hover{
+  background: #aacde6;
+}
+
+.label{
+  display: inline-block;
+  min-width: 60px;
+  margin-right: 10px;
+  border-radius: 5px;
+  text-align: center;
+  font-weight: bold;
+  color: white;
+  padding: 5px 0;
+  font-size: 0.7em;
+}
+
+.label-city{
+  background: rgb(53, 155, 189);
+}
+
+.label-airport{
+  background: rgb(236, 87, 87);
+}
+
+.label-station{
+  background: lightgreen;
+}
+
+.label-region{
+  color: black;
+  background: yellow;
+}
+
+.label-other{
+  background: lightslategrey;
 }

@@ -24,20 +24,30 @@ class SearchGadget extends Component {
         this.apiService = new ApiService();
         this.state = {pickUpLocations: [], searchTerm: ''};
         this.handleInput = this.handleInput.bind(this);
+        this.blurInput = this.blurInput.bind(this);
     }
     handleInput = debounce(searchTerm => {
-      if(searchTerm.length > 3){
+      this.setState({pickUpLocations: []});
+
+      if(searchTerm.length >= 2){
           this.apiService.getPickUpLocations(searchTerm).then((res) => {
-            this.setState({pickUpLocations: res.docs});
+            this.setState({pickUpLocations: res.results.docs});
           });
       }
 
       this.setState({searchTerm: searchTerm});
     }, 250);
+    blurInput = () =>{
+      this.setState({pickUpLocations: []});
+    }
     render() {
-        let pickUpLocation;
+        let pickUpLocationComponents = [];
 
-        for(){}
+        for (let pickUpLoc of this.state.pickUpLocations) {
+          pickUpLocationComponents.push(<Destination key={pickUpLoc.index} location={pickUpLoc}></Destination>)
+        }
+
+        let pickUpSelect = <div>{pickUpLocationComponents}</div>;
 
         return (
           <div className="gadget-container">
@@ -51,12 +61,11 @@ class SearchGadget extends Component {
                 aria-required="true"
                 autoComplete="off"
                 onChange={e => {this.handleInput(e.target.value)}}
+                onBlur={this.blurInput}
                 name="name">
               </input>
 
-              <select name="cars">
-                <option value="volvo">Volvo</option>
-              </select>
+              {pickUpSelect}
 
             </div>
           </div>
