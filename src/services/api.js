@@ -1,5 +1,7 @@
 export default class Api {
 
+    endpoint = "https://www.rentalcars.com/LocationAutocomplete.do?&preflang=en&domain=rc.com&cor=gb";
+    numberOfResults = 6;
     static instance;
 
     constructor(){
@@ -7,13 +9,9 @@ export default class Api {
         Api.instance = this;
     }
 
-    setUserProfileDetails = (userToken, authEmail, details) => {
-        return fetch(this.lambdaUrl + 'users/' + authEmail, {
-            method: 'PUT',
-            headers: {
-                'Authorization': userToken
-            },
-            body: JSON.stringify(details)
+    getPickUpLocations = (input) => {
+        return fetch(this.endpoint + `&rows=${this.numberOfResults}&term=${input}`, {
+            method: 'GET'
         }).then(response => response.json())
             .catch(err => {return err});
     };

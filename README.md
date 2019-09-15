@@ -5,6 +5,7 @@ Created using Node v10.14.1
 Technologies used:
 - Node
 - Yarn
+- Create React App
 - Fetch
 
 ## Installing dependencies:
